@@ -202,6 +202,7 @@ void refatoraPlayED(PlayED *played)
     // varre a lista de usuarios ate o final
     while (user != NULL)
     {
+        int qtdePlaylists = 0;
         ListaDePlaylist *listaPlaylist = retornaListaPlaylistUsuario(user);
 
         // essa nova lista de playlists é organizada por artistas
@@ -226,6 +227,7 @@ void refatoraPlayED(PlayED *played)
                     playlistDoArtista = criaPlaylist(retornaArtistaMusica(musica));
                     inserePlaylistNaLista(novaListaPlaylist, playlistDoArtista);
                     inserePlaylistNaLista(played->playlists, playlistDoArtista);
+                    qtdePlaylists++;
                 }
 
                 insereMusicaNaPlaylist(playlistDoArtista, musica);
@@ -242,6 +244,7 @@ void refatoraPlayED(PlayED *played)
         // playlist refatorada no usuario
         destroiListaDePlaylist(listaPlaylist);
         insereListaPlaylistUsuario(user, novaListaPlaylist);
+        atribuiQtdPlaylistsUsuario(user, qtdePlaylists);
         user = retornaProxUsuario(played->usuarios, user);
     }
 }
