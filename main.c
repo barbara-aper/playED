@@ -12,7 +12,7 @@
 int main(int argc, char *argv[])
 {
     char caminhoPastaEntrada[TAM_NOME_CAMINHO] = "Entrada";
-    char caminhoPastaSaida[TAM_NOME_CAMINHO] = "Saida2";
+    char caminhoPastaSaida[TAM_NOME_CAMINHO] = "Saida";
     char caminhoPastaMerge[TAM_NOME_CAMINHO] = "Merge";
 
     PlayED *playED = criaPlayED(caminhoPastaEntrada);
