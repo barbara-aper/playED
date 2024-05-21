@@ -309,6 +309,25 @@ void imprimePlayEDRefatorada(PlayED *played, char *caminhoPastaSaida)
     fclose(arquivoRefatora);
 }
 
+/*Comentário pra guiar o programa:
+Esquema de similaridades:
+-Pega o primeiro usuário da lista de usuários
+- Pega o primeiro amigo da lista de amigos desse usuário
+    -  Verifica se esse amigo já passou pelo loop principal (flag similaridade = 1)
+    - Se for, passa pro próximo amigo
+        - Caso não seja, abre a lista de playlist do usuário, pega a primeira playlist
+            - pega a primeira música dessa playlist
+                - busca essa música na lista de playlist do amigo
+                    - se essa musica existir, aumenta o contador similaridades
+            -passa pra próxima musica e repete o processo ate o final da playlist
+        - Passa para próxima playlist ate o final da lista de playlist
+    -imprime no arquivo a quantidade de similaridades entre os dois amigos
+    - reseta o contador de similaridade
+    - passa pro próximo amigo ate chegar no final da lista de amigos
+- Marca o usuario com a flag similaridade
+- passa pro próximo usuário até chegar no ultimo
+*/
+
 void imprimeSimilaridades(PlayED *played, char *caminhoPastaSaida)
 {
     char *docSimilaridades = "similaridades.txt";
@@ -388,6 +407,7 @@ Esquema de merge:
     - Passa por todas as playlists da pessoa
 - Passa por todas as pessoas da lista de usuários
 */
+
 void mergePlayED(PlayED *played)
 {
     Usuario *user = retornaPrimUsuario(played->usuarios);
